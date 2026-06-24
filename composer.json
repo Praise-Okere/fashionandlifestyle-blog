@@ -1,0 +1,8 @@
+{
+    "name": "praise-okere/fashion-blog",
+    "description": "A luxury fashion and lifestyle blog",
+    "type": "project",
+    "require": {
+        "php": "^8.0"
+    }
+}
