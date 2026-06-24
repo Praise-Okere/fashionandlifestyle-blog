@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /fashion/
+    
+    # Route the root directory directly to the home page
+    RewriteRule ^$ public/index.php?route=home [QSA,L]
+    
+    # Allow access to the public directory
+    RewriteCond %{REQUEST_URI} !^/fashion/public/
+    
+    # If the requested filename is not a file or directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Route all other requests to public/index.php
+    RewriteRule ^(.*)$ public/index.php?route=$1 [QSA,L]
+</IfModule>
+
+# Security enhancements
+ServerSignature Off
+Options -Indexes
+
+# Prevent access to dot files (.env, .git, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
